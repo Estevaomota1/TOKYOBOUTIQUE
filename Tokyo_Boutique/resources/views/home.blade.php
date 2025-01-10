@@ -76,6 +76,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('produtos.create') }}">Adicionar Produto</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('desejos') }}">Desejos </a>
+                    </li>
                 </ul>
             </div>
         </div>

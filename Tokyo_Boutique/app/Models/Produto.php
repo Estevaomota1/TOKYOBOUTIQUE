@@ -9,5 +9,6 @@ class Produto extends Model
 {
     use HasFactory;
 
+    // Defina os campos que podem ser preenchidos via formulário
     protected $fillable = ['nome', 'descricao', 'preco'];
 }
