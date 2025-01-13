@@ -7,18 +7,44 @@
     <title>Tokyo Boutique</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .navbar-brand {
-            text-align: center;
-            width: 100%;
-        }
-
-        .navbar-nav {
-            margin-left: auto;
+        body {
+            background-color: #FFFDD0; /* Creme */
+            color: #333; /* Texto escuro para contraste */
         }
 
         .navbar {
+            background-color: #F5DEB3; /* Tom creme */
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .navbar-nav {
+            margin-left: auto; /* Ajusta o menu para a direita */
+        }
+
+        .hero-section {
+            background-image: url('https://via.placeholder.com/1920x600');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            color: black;
+            display: flex;
+            align-items: center;
             justify-content: center;
-        }sss
+            text-align: center; /* Garante centralização do texto */
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
 
         .category-item {
             text-align: center;
@@ -35,20 +61,9 @@
             margin-top: 10px;
         }
 
-        .hero-section {
-            background-image: url('https://via.placeholder.com/1920x600');
-            background-size: cover;
-            background-position: center;
-            height: 400px;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-section h1 {
-            font-size: 3rem;
-            font-weight: bold;
+        footer {
+            background-color: #333;
+            color: #fff;
         }
     </style>
 </head>
@@ -56,28 +71,30 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#">Tokyo Boutique</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
+                        <a class="nav-link" href="#">Fale Conosco</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('desejos') }}">Desejos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contato</a>
+                        <a class="nav-link" href="{{ route('Conta') }}">Minha conta </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('produtos.create') }}">Adicionar Produto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('desejos') }}">Desejos </a>
                     </li>
                 </ul>
             </div>
@@ -118,7 +135,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4">
+    <footer class="text-center py-4">
         <p>&copy; 2025 Tokyo Boutique. Todos os direitos reservados.</p>
     </footer>
 
