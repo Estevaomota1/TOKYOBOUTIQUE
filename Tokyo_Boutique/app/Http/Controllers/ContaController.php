@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 
 class ContaController extends Controller
 {
+    /**
+     * Exibe a página de criação de contas.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
-        return view('conta'); // Certifique-se que o arquivo resources/views/conta.blade.php existe
+        // Certifique-se de que o arquivo resources/views/conta.blade.php existe
+        return view('conta');
     }
 }
