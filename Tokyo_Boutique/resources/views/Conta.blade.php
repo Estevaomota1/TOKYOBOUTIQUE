@@ -3,89 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Identificação - Criar Conta</title>
+    <title>Identificação</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: #f4f4f4;
         }
         .container {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 400px;
+            margin: auto;
             padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1 {
+        h2 {
             text-align: center;
             color: #333;
         }
-        .section {
-            margin-bottom: 20px;
-        }
-        .section h2 {
-            margin-bottom: 10px;
+        form {
+            display: flex;
+            flex-direction: column;
         }
         label {
-            display: block;
-            margin-bottom: 5px;
+            margin: 10px 0 5px;
             font-weight: bold;
         }
-        input[type="text"], input[type="email"], input[type="password"], button {
-            width: 100%;
+        input {
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
         }
         button {
-            background-color: #007bff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
             color: #fff;
-            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
         }
         button:hover {
             background-color: #0056b3;
         }
-        a {
-            color: #007bff;
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .link a {
+            color: #007BFF;
             text-decoration: none;
         }
-        a:hover {
+        .link a:hover {
             text-decoration: underline;
+        }
+        .obrigatorio {
+            color: red;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Identificação</h1>
-        <p>Faça o seu login ou crie uma conta caso ainda não possua cadastro</p>
+        <h2>Identificação</h2>
+        <p><strong>Já possuo uma conta</strong></p>
+        <p><span class="obrigatorio">Campos Obrigatórios*</span></p>
 
-        <div class="section">
-            <h2>Já sou cadastrado</h2>
-            <form action="/login" method="POST">
-                @csrf
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+        <form action="/identificacao" method="POST">
+            @csrf <!-- Token de segurança obrigatório no Laravel -->
+            <label for="login">Login *</label>
+            <input type="text" id="login" name="login" placeholder="Digite seu login" required>
 
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+            <label for="senha">Senha *</label>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
 
-                <button type="submit">Prosseguir</button>
-                <p><a href="/senha-esquecida">Esqueceu a senha</a> ou <a href="#criar-conta">precisa criar uma conta?</a></p>
-            </form>
-        </div>
+            <div class="link">
+                <a href="/esqueceu-senha">Esqueceu sua senha?</a>
+            </div>
+            <div class="link">
+                <p>Ou use o link de uso único para login:</p>
+                <a href="/enviar-link">Envie-me por e-mail o link</a>
+            </div>
 
-        <div class="section" id="criar-conta">
-            <h2>Ainda não possuo cadastro</h2>
-            <form action="/registrar" method="POST">
-                @csrf
-                <label for="novo-email">Digite o e-mail que deseja cadastrar:</label>
-                <input type="email" id="novo-email" name="novo-email" placeholder="Digite seu e-mail" required>
+            <button type="submit">Entrar</button>
+        </form>
 
-                <button type="submit">Cadastrar</button>
-            </form>
+        <div class="link">
+            <p>Ainda não possui uma conta? <a href="/cadastro">Cadastre-se aqui</a></p>
         </div>
     </div>
 </body>

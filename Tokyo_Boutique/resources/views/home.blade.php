@@ -75,7 +75,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/Tokyo_Boutique/public/">Home</a>
+                        <a class="nav-link" href="home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" id="toggleContact">Fale Conosco</a>
@@ -87,7 +87,7 @@
                         <a class="nav-link" href="conta">Minha Conta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Adicionar Produto</a>
+                        <a class="nav-link" href="produtos">Adicionar Produto</a>
                     </li>
                 </ul>
             </div>

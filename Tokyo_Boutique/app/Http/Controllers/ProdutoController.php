@@ -7,39 +7,55 @@ use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
-    /**
-     * Exibe o formulário para adicionar um novo produto.
-     *
-     * @return \Illuminate\View\View
-     */
+    public function index()
+    {
+        $produtos = Produto::all();
+        return view('produtos.index', compact('produtos'));
+    }
+
     public function create()
     {
         return view('produtos.create');
     }
 
-    /**
-     * Salva o novo produto no banco de dados.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
-        // Validação básica (adapte conforme necessário)
-        $validated = $request->validate([
+        $request->validate([
             'nome' => 'required|string|max:255',
-            'descricao' => 'nullable|string',
+            'descricao' => 'required|string',
             'preco' => 'required|numeric|min:0',
         ]);
 
-        // Cria um novo produto e salva no banco
-        $produto = new Produto();
-        $produto->nome = $validated['nome'];
-        $produto->descricao = $validated['descricao'];
-        $produto->preco = $validated['preco'];
-        $produto->save();
+        Produto::create($request->all());
 
-        // Redireciona para a página de categorias com uma mensagem de sucesso
-        return redirect()->route('categorias')->with('success', 'Produto adicionado com sucesso!');
+        return redirect()->route('produtos.index')->with('success', 'Produto cadastrado com sucesso!');
+    }
+
+    public function edit($id)
+    {
+        $produto = Produto::findOrFail($id);
+        return view('produtos.edit', compact('produto'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'descricao' => 'required|string',
+            'preco' => 'required|numeric|min:0',
+        ]);
+
+        $produto = Produto::findOrFail($id);
+        $produto->update($request->all());
+
+        return redirect()->route('produtos.index')->with('success', 'Produto atualizado com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
+
+        return redirect()->route('produtos.index')->with('success', 'Produto excluído com sucesso!');
     }
 }
