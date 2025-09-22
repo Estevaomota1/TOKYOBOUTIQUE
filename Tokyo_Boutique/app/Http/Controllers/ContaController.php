@@ -13,7 +13,7 @@ class ContaController extends Controller
      */
     public function index()
     {
-        // Certifique-se de que o arquivo resources/views/conta.blade.php existe
+        
         return view('conta');
     }
 }
